@@ -8,7 +8,8 @@ const path = require('path');
 const error = require('koa-error')
 const bluebird = require('bluebird');
 const favicon = require('koa-favicon');
-const staticCache = require('koa-static-cache')
+const staticCache = require('koa-static-cache');
+const proxy = require('koa-proxies');
 const sysRoutes = require('./routes');
 const config = require('../config/index');
 const log = require('./common/logger');
@@ -34,15 +35,19 @@ const serve = (prefix, path, cache) => staticCache(join(path), {
 });
 
 const proxyTable = config[env].server.proxyTable;
-// if (proxyTable) {
-//   Object.keys(proxyTable).forEach(function (context) {
-//     let options = proxyTable[context];
-//     if (typeof options === 'string') {
-//       options = {target: options}
-//     }
-//     app.use(proxyMiddleware(options.filter || context, options))
-//   })
-// }
+if (proxyTable) {
+  Object.keys(proxyTable).forEach(context => {
+    let options = proxyTable[context];
+    if (typeof options === 'string') {
+      options = {
+        target: options,
+        changeOrigin: true,
+        logs: true
+      }
+    }
+    app.use(proxy(context, options))
+  })
+}
 
 app.use(favicon('favicon.png'));
 app.use(serve(assetsSubDirectory, assetsSubDirectory, true));

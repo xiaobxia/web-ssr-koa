@@ -46,6 +46,7 @@
     "koa": "^2.4.1",
     "koa-error": "^3.1.1",
     "koa-favicon": "^2.0.0",
+    "koa-proxies": "^0.6.2",
     "koa-router": "^7.3.0",
     "koa-static-cache": "^5.1.1",
     "log4js": "^2.4.1",
