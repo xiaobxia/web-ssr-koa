@@ -1,0 +1,304 @@
+@import "var/var";
+@import "./var/core";
+@import "./var/slider";
+
+.line-item {
+  display: inline-block;
+}
+
+.mui-scroll-wrapper {
+  position: relative;
+  height: $card-height;
+  .mui-scroll {
+    height: 100%;
+  }
+  .line-item {
+    margin: 0 46px 0 0;
+    height: $card-height;
+    width: $card-width;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  .pic-wrap {
+    width: $card-width;
+    height: $card-img-height;
+    background-color: $img-color;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      min-height: $card-img-height;
+    }
+  }
+  h4 {
+    margin: 16px 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .text-wrap {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: 500;
+    .grey-text {
+      float: right;
+    }
+  }
+}
+
+.houseMainInfo-wrap {
+  h2 {
+    margin: 0 0 46px 0;
+    font-size: 46px;
+    color: #000;
+    font-weight: 500;
+  }
+  .base-info {
+    margin: 46px 0;
+    .item-wrap {
+      display: inline-block;
+      width: (0.96/3)*100%;
+      text-align: center;
+      border-right: 1px solid $grey;
+      &:last-child {
+        border: none;
+      }
+      .item-title {
+        margin-bottom: 20px;
+        font-size: 26px;
+        color: $grey-text-color;
+      }
+      .item-value {
+        font-size: 32px;
+        color: $red-text-color;
+      }
+    }
+  }
+  .detail-info {
+    margin: 46px 0 0 0;
+    .item-wrap {
+      display: inline-block;
+      margin-bottom: 32px;
+      width: 49%;
+      font-size: 30px;
+      color: $grey-text-color;
+      &:last-child {
+        margin: 0;
+      }
+      .item-title {
+        display: inline;
+        font-size: 30px;
+        color: $grey-text-color;
+      }
+      .item-value {
+        display: inline;
+        font-size: 30px;
+        color: #000;
+      }
+    }
+  }
+}
+
+.community-icon {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.2em;
+  vertical-align: bottom;
+}
+
+.community-icon {
+  background: #fff none no-repeat center center;
+  background-size: contain;
+  background-size: contain;
+  background-image: url("../asset/community-icon-2x.png");
+}
+
+[data-dpr="3"] {
+  .community-icon {
+    background: #fff none no-repeat center center;
+    background-size: contain;
+    background-image: url("../asset/community-icon-3x.png");
+  }
+}
+
+#house-baidu-map {
+  width: 100%;
+  height: 422px;
+  background-color: #eee;
+}
+
+.tab-wrap {
+  position: relative;
+  h2 {
+    margin: 0;
+    font-size: 36px;
+    color: #000;
+    font-weight: 500;
+  }
+  .mui-segmented-control {
+    display: block;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: auto;
+    font-size: 28px;
+    color: $grey-text-color;
+    border: none;
+    .mui-control-item-no {
+      line-height: 38PX;
+      display: table-cell;
+      overflow: hidden;
+      width: 1%;
+      -webkit-transition: background-color .1s linear;
+      transition: background-color .1s linear;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: #007aff;
+      border-color: #007aff;
+      border-left: 1px solid #007aff;
+    }
+    .mui-control-item-no, .mui-control-item {
+      display: inline-block;
+      padding: 20px 10px;
+      margin-right: 0.5em;
+      width: auto;
+      background-color: #fff;
+      border: none;
+      color: $grey-text-color;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    a {
+      &:last-child {
+        margin: 0;
+      }
+    }
+    .mui-control-item {
+      &.mui-active {
+        color: $green-text-color;
+      }
+    }
+  }
+}
+
+.more-btn {
+  margin: 30px 0;
+  width: 686px;
+  height: 76px;
+  line-height: 76px;
+  background-color: #f5f5f5;
+  text-align: center;
+  font-size: 26px;
+  color: $grey-text-color;
+  cursor: pointer;
+}
+
+.like-icon {
+  background: #fff none no-repeat center center;
+  background-size: contain;
+  background-image: url("../asset/like-icon-2x.png");
+  &.active {
+    background-image: url("../asset/like-icon-active-2x.png");
+  }
+}
+
+.compare-icon {
+  background: #fff none no-repeat center center;
+  background-size: contain;
+  background-image: url("../asset/compare-icon-2x.png");
+}
+
+[data-dpr="3"] {
+  .like-icon {
+    background: #fff none no-repeat center center;
+    background-size: contain;
+    background-image: url("../asset/like-icon-3x.png");
+    &.active {
+      background-image: url("../asset/like-icon-active-3x.png");
+    }
+  }
+
+  .compare-icon {
+    background: #fff none no-repeat center center;
+    background-size: contain;
+    background-image: url("../asset/compare-icon-2x.png");
+  }
+}
+
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  height: 120px;
+  width: 100%;
+  line-height: 120px;
+  background-color: #fff;
+  overflow: hidden;
+  .btn-wrap{
+    float: left;
+    height: 100%;
+  }
+  .like-btn, .compare-btn {
+    float: left;
+    padding: 10px;
+    height: 100%;
+    text-align: center;
+  }
+  .contact-btn {
+    float: left;
+    height: 100%;
+    background-color: $green;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    font-weight: 500;
+    a{
+      color: #fff;
+    }
+  }
+  .icon {
+    height: 60px;
+    line-height: 60px;
+    .compare-icon, .like-icon{
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
+    }
+  }
+  .text{
+    height: 40px;
+    line-height: 40px;
+    font-size: 22px;
+    color: #878787;
+  }
+  &.rent {
+    .btn-wrap{
+      width: 220px;
+    }
+    .like-btn, .compare-btn {
+      width: 200px;
+    }
+    .contact-btn {
+      width: 530px;
+    }
+  }
+  &.sell {
+    .btn-wrap{
+      width: 50%;
+    }
+    .like-btn, .compare-btn {
+      width: 160px;
+    }
+    .contact-btn {
+      width: 50%;
+    }
+  }
+}
