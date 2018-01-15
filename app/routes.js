@@ -92,6 +92,7 @@ router.get('/house/houseDetail', async (ctx) => {
   data.userType = query.userType;
   data.userId = query.userId;
   data.attentionState = "0";
+  data.isDev = isDev;
   if (data.title.length > 16) {
     data.title = data.title.substring(0, 16) + '...';
   }
@@ -119,6 +120,7 @@ router.get('/house/communityDetail', async (ctx) => {
   data.houseType = query.houseType;
   data.userType = query.userType;
   data.attentionState = '1';
+  data.isDev = isDev;
   ctx.body = renderPug(ctx, 'communityDetail.pug', data);
 });
 
