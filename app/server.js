@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const Koa = require('koa');
 const microcache = require('route-cache');
 const path = require('path');
+const error = require('koa-error')
 const bluebird = require('bluebird');
 const favicon = require('koa-favicon');
 const staticCache = require('koa-static-cache')
@@ -62,6 +63,8 @@ app.use(async (ctx, next) => {
   ctx.set('X-Response-Time', `${ms}ms`);
   log.info(`请求"${ctx.originalUrl}"的累计用时: ${ms}ms`);
 });
+
+app.use(error());
 
 app.use(sysRoutes.routes());
 
