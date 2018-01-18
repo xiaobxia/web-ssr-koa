@@ -17,7 +17,7 @@ function changeTitle(title) {
 }
 
 function setAdaptive() {
-  var _baseFontSize = 10;
+  var _baseFontSize = 20;
   //和width有关
   var winWidth = 0;
   if (window.innerWidth) {
@@ -53,7 +53,8 @@ function setAdaptive() {
   window.adaptive = {
     winWidth: winWidth,
     dpr: dpr,
-    fontSize: _baseFontSize / 2 * dpr * _fontscale
+    fontSize: _baseFontSize / 2 * dpr * _fontscale,
+    baseFontSize: _baseFontSize
   };
 }
 

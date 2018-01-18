@@ -4,6 +4,7 @@ const uglify = require("gulp-uglify");
 
 gulp.task('util', function () {
   return gulp.src([
+    './src/dll/blazy.js',
     './src/dll/mui.previewimage.js',
     './src/dll/mui.zoom.js',
     './src/dll/util.js'

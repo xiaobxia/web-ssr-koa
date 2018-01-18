@@ -105,25 +105,8 @@
 
 .community-icon {
   display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
   margin-right: 0.2em;
   vertical-align: bottom;
-}
-
-.community-icon {
-  background: #fff none no-repeat center center;
-  background-size: contain;
-  background-size: contain;
-  background-image: url("../asset/community-icon-2x.png");
-}
-
-[data-dpr="3"] {
-  .community-icon {
-    background: #fff none no-repeat center center;
-    background-size: contain;
-    background-image: url("../asset/community-icon-3x.png");
-  }
 }
 
 #house-baidu-map {
@@ -199,65 +182,25 @@
   cursor: pointer;
 }
 
-.like-icon {
-  background-image: url("../asset/sprite-2.png");
-  background-position: 0px 0px;
-  width: 44px;
-  height: 38px;
-  background-repeat: no-repeat;
-  background-size: 88px 75px;
-  transform: scale(1);
-  &.active {
-    background-image: url("../asset/sprite-2.png");
-    background-position: -54px 0px;
-  }
-}
-
-.compare-icon {
-  background: #fff none no-repeat center center;
-  background-size: contain;
-  background-image: url("../asset/compare-icon-2x.png");
-}
-
-[data-dpr="3"] {
-  .like-icon {
-    background-image: url("../asset/sprite-3.png");
-    background-position: 0px 0px;
-    width: 66px;
-    height: 57px;
-    background-repeat: no-repeat;
-    background-size: 132px 113px;
-    transform: scale((44/66));
-    &.active {
-      background-image: url("../asset/sprite-3.png");
-      background-position: -76px 0px;
-    }
-  }
-
-  .compare-icon {
-    background: #fff none no-repeat center center;
-    background-size: contain;
-    background-image: url("../asset/compare-icon-2x.png");
-  }
-}
-
 .bottom-bar {
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 1000;
-  height: 120px;
+  z-index: 19;
+  height: 100px;
   width: 100%;
-  line-height: 120px;
+  line-height: 100px;
   background-color: #fff;
   overflow: hidden;
+  border-top: 1px solid $grey;
   .btn-wrap {
+    padding: 0 32px;
     float: left;
     height: 100%;
   }
   .like-btn, .compare-btn {
     float: left;
-    padding: 10px;
+    padding: 14px 0 0 0;
     height: 100%;
     text-align: center;
   }
@@ -274,12 +217,10 @@
     }
   }
   .icon {
-    height: 60px;
-    line-height: 60px;
+    height: 46px;
+    line-height: 46px;
     .compare-icon, .like-icon {
       display: inline-block;
-      //width: 48px;
-      //height: 48px;
       vertical-align: middle;
     }
   }
@@ -294,7 +235,7 @@
       width: 220px;
     }
     .like-btn, .compare-btn {
-      width: 200px;
+      width: 156px;
     }
     .contact-btn {
       width: 530px;
@@ -305,7 +246,7 @@
       width: 50%;
     }
     .like-btn, .compare-btn {
-      width: 160px;
+      width: 152px;
     }
     .contact-btn {
       width: 50%;

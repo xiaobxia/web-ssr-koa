@@ -24,7 +24,7 @@ module.exports = {
       pug: './src/pug/**'
     },
     pxtorem: {
-      rootValue: 10,
+      rootValue: 20,
       unitPrecision: 5,
       propList: ['*'],
       selectorBlackList: [],

@@ -5,7 +5,7 @@ let gulp = require('gulp');
 let spritesmith = require('gulp.spritesmith');
 
 gulp.task('sprite-2', function () {
-  let spriteData = gulp.src('src/asset/*-2x.png').pipe(spritesmith({
+  let spriteData = gulp.src('src/sprite/*-2x.png').pipe(spritesmith({
     imgName: 'sprite-2.png',
     cssName: 'sprite-2.css',
     padding: 10
@@ -13,7 +13,7 @@ gulp.task('sprite-2', function () {
   return spriteData.pipe(gulp.dest('./dest'));
 });
 gulp.task('sprite-3', function () {
-  let spriteData = gulp.src('src/asset/*-3x.png').pipe(spritesmith({
+  let spriteData = gulp.src('src/sprite/*-3x.png').pipe(spritesmith({
     imgName: 'sprite-3.png',
     cssName: 'sprite-3.css',
     padding: 10

@@ -1,16 +1,16 @@
 mixin scroll-community(communityList, defaultImg, userType, houseType, userId)
   if communityList.length != 0
     .mui-scroll-wrapper
-      div(class="mui-scroll" style={width: communityAround.length * 27.6 + 'rem'})
+      div(class="mui-scroll" style={width: communityList.length * 17.3 + 'rem'})
         each communityInfo in communityList
           div(class="mui-card line-item")
             a(class="block-like link-a" href='/house/communityDetail?blockId=' + communityInfo.id + '&userType=' + userType + '&houseType=' + houseType + '&userId=' + userId)
               .mui-card-content
                 .pic-wrap
                   if communityInfo.surface_img != ''
-                    img(src=communityInfo.surface_img)
+                    img(class="b-lazy" src=defaultImg data-src=communityInfo.surface_img)
                   else
-                    img(src=defaultImg)
+                    img(class="b-lazy" src=defaultImg)
                 h4=communityInfo.cmt_name + ' ' + communityInfo.build_date + '年建'
                 .text-wrap
                   span.red-text=communityInfo.averprice + (houseType == '1' ? '元/平' : '元/月')

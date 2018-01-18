@@ -2,6 +2,11 @@
  * Created by xiaobxia on 2017/12/20.
  */
 (function () {
+  var bLazy = new Blazy({
+  });
+  // mui('body').on('resize', resizeFn);
+  console.log(window.adaptive);
+  var baseFontSize = window.adaptive.baseFontSize;
   var windowZoom = window.adaptive.winWidth / 375,
     mapZoom = windowZoom * 17,
     map = new BMap.Map("house-baidu-map"),
@@ -18,8 +23,8 @@
   map.disablePinchToZoom();
   var trueIconWidth = iconInfo.width;
   var trueIconHeight = iconInfo.height;
-  var adaptiveIconWidth = trueIconWidth * window.adaptive.fontSize / 10;
-  var adaptiveIconHeight = trueIconHeight * window.adaptive.fontSize / 10;
+  var adaptiveIconWidth = trueIconWidth * window.adaptive.fontSize / baseFontSize;
+  var adaptiveIconHeight = trueIconHeight * window.adaptive.fontSize / baseFontSize;
 
   //设置背景部分
   var iconSize = new BMap.Size(adaptiveIconWidth, adaptiveIconHeight);
@@ -31,7 +36,7 @@
     position: point, // 指定文本标注所在的地理位置
     offset: new BMap.Size(-adaptiveIconWidth / 2, -adaptiveIconHeight / 2) //设置文本偏移量
   };
-  var labelWrapStyle = "width: " + (trueIconWidth / 10 + 'rem') + ";height: " + (iconInfo.textHeight / 10 + 'rem') + ";line-height:" + (iconInfo.textHeight / 10 + 'rem') + ";font-size: 3.2rem; text-align: center;color: #555";
+  var labelWrapStyle = "width: " + (trueIconWidth / baseFontSize + 'rem') + ";height: " + (iconInfo.textHeight / baseFontSize + 'rem') + ";line-height:" + (iconInfo.textHeight / baseFontSize + 'rem') +  ";font-size: "+(32/baseFontSize)+"rem;"+"text-align: center;color: #555";
   var labelText = `${disrictName},${streetName}`;
   var labelTemplate = "<div class=\"point-label\" style=\"" + labelWrapStyle + "\">" + labelText + "</div>";
   var label = new BMap.Label(labelTemplate, opts); // 创建文本标注对象

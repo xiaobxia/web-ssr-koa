@@ -6,9 +6,9 @@ mixin houseList(houseList, defaultImg, userType, houseType, userId)
           div
             .pic-wrap
               if houseInfo.pic != ''
-                img(src=houseInfo.pic)
+                img(class="b-lazy" src=defaultImg data-src=houseInfo.pic)
               else
-                img(src=defaultImg)
+                img(class="b-lazy" src=defaultImg)
             .info-wrap
               h3=houseInfo.block_name
               if houseType == '1'

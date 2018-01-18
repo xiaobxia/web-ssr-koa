@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env MICRO_CACHE=false NODE_ENV=dev nodemon --inspect ./app/server.js",
     "dev:gulp": "gulp",
+    "dll": "gulp --gulpfile ./gulpfile.dll.js",
     "sprite": "gulp --gulpfile ./gulpfile.sprite.js",
     "build": "gulp --gulpfile ./gulpfile.production.js",
     "start": "npm run build && cross-env NODE_ENV=prod pm2 start ./app/server.js --name=web-ssr-koa"

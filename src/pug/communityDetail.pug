@@ -1,3 +1,4 @@
+include var/var
 include components/carousel
 include components/houseList
 include components/scroll
@@ -21,15 +22,15 @@ html(lang="en")
       script(type="text/javascript").
         var vConsole = new VConsole();
   body
-    +carousel('slider', 'slider-number-index', img, '/static/asset/default-community-img.jpg')
+    +carousel('slider', 'slider-number-index', img, _defaultPhoto)
     .like-wrap
       h4=cmt_name
       span.grey-text=address
       #like-btn
         if attentionState == '0'
-          span(class="like-icon" id="like-icon")
+          span(class="like-icon b-icon" id="like-icon")
         else
-          span(class="like-icon active" id="like-icon")
+          span(class="like-icon active b-icon" id="like-icon")
         | 关注
     .divider-horizontal-block
     .community-info-wrap
@@ -53,17 +54,17 @@ html(lang="en")
         a(class="mui-control-item" href="#rent") 在租
     .content-wrap-h
       #sale.mui-control-content.mui-active
-        +houseList(houseInblock.sell.lists, '/static/asset/default-house-img.jpg', userType, '1', userId)
+        +houseList(houseInblock.sell.lists, _defaultPhoto, userType, '1', userId)
         .more-btn 查看更多
       #rent.mui-control-content
-        +houseList(houseInblock.rent.lists, '/static/asset/default-house-img.jpg', userType, '2', userId)
+        +houseList(houseInblock.rent.lists, _defaultPhoto, userType, '2', userId)
         .more-btn 查看更多
     if communityAround.length != 0
       .content-wrap.tab-wrap
         h2.content-title 周边小区
       .content-wrap-left
-        +scroll-community(communityAround, "/static/asset/default-house-img.jpg" , userType, houseType, userId)
-    div(style="height: 5rem")
+        +scroll-community(communityAround, _defaultPhoto , userType, houseType, userId)
+    div(style="height: 2.5rem")
     div(style={display: 'none'})
     script(type="text/javascript").
       var attentionState = "#{attentionState}";

@@ -5,7 +5,7 @@ mixin carousel(id, numberId, imgs, defaultImg)
         each val in imgs
           .mui-slider-item
             a(href="#")
-              img(src=val  data-preview-src="" data-preview-group="1")
+              img(class="b-lazy" src=defaultImg data-src=val  data-preview-src="" data-preview-group="1")
       else
         .mui-slider-item
           a(href="#")

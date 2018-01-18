@@ -1,3 +1,4 @@
+include var/var
 include components/carousel
 include components/scroll
 include components/scroll-community
@@ -20,7 +21,7 @@ html(lang="en")
       script(type="text/javascript").
         var vConsole = new VConsole();
   body
-    +carousel('slider', 'slider-number-index', img, '/static/asset/default-house-img.jpg')
+    +carousel('slider', 'slider-number-index', img, _defaultPhoto)
     .content-wrap.houseMainInfo-wrap
       h2=title
       .divider-horizontal
@@ -57,7 +58,7 @@ html(lang="en")
         .item-wrap.no-bottom(style="width: 100%")
           .item-title 小区：
           .item-value
-            span.community-icon
+            span.community-icon.b-icon
             a(class='green-text link-a' href='/house/communityDetail?blockId=' + block_id + '&houseType=' + houseType + '&userType=' + userType + '&userId=' + userId + '&city=' + city)=block_name
     a(class="block-like link-a" href='http://api.map.baidu.com/marker?location=' + communityLocation.b_map_y + ',' + communityLocation.b_map_x + '&title=小区位置&content=' + block_name + '&output=html&src=goldlife')
       #house-baidu-map
@@ -69,31 +70,31 @@ html(lang="en")
           a(class="mui-control-item" href="#rent") 在租
       .content-wrap-left
         #sale.mui-control-content.mui-active
-          +scroll(houseInBlock.sell.lists, "/static/asset/default-house-img.jpg", userType, '1', userId)
+          +scroll(houseInBlock.sell.lists, _defaultPhoto, userType, '1', userId)
           .more-btn='同小区在售' + houseInBlock.sell.tatalCount + '套'
         #rent.mui-control-content
-          +scroll(houseInBlock.rent.lists, "/static/asset/default-house-img.jpg", userType, '2', userId)
+          +scroll(houseInBlock.rent.lists, _defaultPhoto, userType, '2', userId)
           .more-btn='同小区在租' + houseInBlock.rent.tatalCount + '套'
       if communityAround.length != 0
         .content-wrap.tab-wrap
           h2.content-title 周边小区
         .content-wrap-left
-          +scroll-community(communityAround, "/static/asset/default-house-img.jpg", userType, houseType, userId)
+          +scroll-community(communityAround, _defaultPhoto, userType, houseType, userId)
       if userId != ''
-        div(style={height: '17rem'})
+        div(style={height: '8.5rem'})
         if houseType == '1'
           div(class="bottom-bar sell")
             div(class="btn-wrap")
               div(class="compare-btn" id="compare-btn")
                 div(class="icon")
-                  div(class="compare-icon")
+                  div(class="compare-icon b-icon")
                 div(class="text") 加入对比
               div(class="like-btn" id="like-btn")
                 div(class="icon")
                   if attentionState == '0'
-                    div(class="like-icon" id="like-icon")
+                    div(class="like-icon b-icon" id="like-icon")
                   else
-                    div(class="like-icon active" id="like-icon")
+                    div(class="like-icon active b-icon" id="like-icon")
                 div(class="text") 关注
             div(class="contact-btn")
               a(class="btn-a") 预约看房
@@ -103,16 +104,16 @@ html(lang="en")
               div(class="like-btn" id="like-btn")
                 div(class="icon")
                   if attentionState == '0'
-                    div(class="like-icon" id="like-icon")
+                    div(class="like-icon b-icon" id="like-icon")
                   else
-                    div(class="like-icon active" id="like-icon")
+                    div(class="like-icon active b-icon" id="like-icon")
                 div(class="text") 关注
             div(class="contact-btn")
               a(class="btn-a" href="tel:" + brokerPhone) 联系经纪人
       else
-        div(style={height: '5rem'})
+        div(style={height: '2.5rem'})
     else
-      div(style={height: '5rem'})
+      div(style={height: '2.5rem'})
     script(type="text/javascript").
       var attentionState = "#{attentionState}";
       var b_map_x = #{communityLocation.b_map_x};
