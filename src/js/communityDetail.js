@@ -69,9 +69,10 @@ mui('.mui-scroll-wrapper').scroll({
   bounce: true //是否启用回弹
 });
 
-var $likeBtn = $('like-btn');
-var $likeIcon = $('like-icon');
-on($likeBtn, 'click', function () {
+var $likeBtn = $('#like-btn');
+var $likeIcon = $('#like-icon');
+
+$likeBtn.on('tap', function () {
   mui.ajax('/user/attention', {
     data: {
       businessNum,
@@ -87,10 +88,10 @@ on($likeBtn, 'click', function () {
       if (data.success === true) {
         if (attentionState === '0') {
           attentionState = '1';
-          addClass($likeIcon, 'active');
+          $likeIcon.addClass('active');
         } else if (attentionState === '1') {
           attentionState = '0';
-          removeClass($likeIcon, 'active');
+          $likeIcon.removeClass('active');
         }
       }
     }

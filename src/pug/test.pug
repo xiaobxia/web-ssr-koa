@@ -15,23 +15,32 @@ html(lang="en")
       script(type="text/javascript").
         var vConsole = new VConsole();
   body
-    #segmentedControl.mui-segmented-control
-      a(class="mui-control-item" href="#range") 区域
-      a(class="mui-control-item" href="#price") 价格
-      a(class="mui-control-item" href="#type") 房型
-      a(class="mui-control-item" href="#more") 更多
-    .filter-control-wrap
-      #range.mui-control-content
-        div.mui-backdrop
-          ul(class="mui-table-view")
-            li(class="mui-table-view-cell") 1
-            li(class="mui-table-view-cell") 2
-            li(class="mui-table-view-cell") 3
-      #price.mui-control-content
-        div.filter-content-wrap 12
-      #type.mui-control-content
-        div.filter-content-wrap 13
-      #more.mui-control-content
-        div.filter-content-wrap 14
+    div(class="filter-nav-wrap" id="filter-nav-wrap")
+      .filter-segmented-control
+        a(class="filter-control-item" id="range-btn") 区域
+        a(class="filter-control-item" id="price-btn") 价格
+        a(class="filter-control-item" id="type-btn") 房型
+        a(class="filter-control-item" id="more-btn") 更多
+      .filter-control-wrap
+        #range-wrapper.filter-control-content
+          div(id="range-filter-wrap" class="filter-wrap")
+            ul(class="mui-table-view mui-table-view-inverted")
+              li(class="mui-table-view-cell")
+                a(href="javascript:;") 1
+              li(class="mui-table-view-cell")
+                a(href="javascript:;") 2
+              li(class="mui-table-view-cell")
+                a(href="javascript:;") 3
+              li(class="mui-table-view-cell")
+                a(href="javascript:;") 4
+              li(class="mui-table-view-cell")
+                a(href="javascript:;") 5
+        #price.mui-control-content
+          div.filter-content-wrap 12
+        #type.mui-control-content
+          div.filter-content-wrap 13
+        #more.mui-control-content
+          div.filter-content-wrap 14
+        div(id="filter-backdrop" class="filter-backdrop")
     script(type="text/javascript", src="/static/js/test.js")
 

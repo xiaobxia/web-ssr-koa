@@ -4,6 +4,7 @@ const uglify = require("gulp-uglify");
 
 gulp.task('util', function () {
   return gulp.src([
+    './src/dll/zepto.js',
     './src/dll/blazy.js',
     './src/dll/mui.previewimage.js',
     './src/dll/mui.zoom.js',
@@ -13,8 +14,8 @@ gulp.task('util', function () {
     .pipe(uglify())
     .pipe(gulp.dest('./src/lib'));
 });
-// gulp.task('mui', function () {
-//   return gulp.src( './src/dll/mui.js')
+// gulp.task('zepto', function () {
+//   return gulp.src( './src/dll/zepto.js')
 //     .pipe(uglify())
 //     .pipe(gulp.dest('./src/lib'));
 // });

@@ -70,9 +70,10 @@ mui('.mui-scroll-wrapper').scroll({
   bounce: true //是否启用回弹
 });
 
-var $likeBtn = $('like-btn');
-var $likeIcon = $('like-icon');
-on($likeBtn, 'click', function () {
+var $likeBtn = $('#like-btn');
+var $likeIcon = $('#like-icon');
+
+$likeBtn.on('tap', function () {
   mui.ajax('/user/attention', {
     data: {
       businessNum,
@@ -88,10 +89,10 @@ on($likeBtn, 'click', function () {
       if (data.success === true) {
         if (attentionState === '0') {
           attentionState = '1';
-          addClass($likeIcon, 'active');
+          $likeIcon.addClass('active');
         } else if (attentionState === '1') {
           attentionState = '0';
-          removeClass($likeIcon, 'active');
+          $likeIcon.removeClass('active');
         }
       }
     }
@@ -103,6 +104,49 @@ mui('body').on('tap','a',function(){
     document.location.href=this.href;
   }
 });
+
+mui('body').on('tap','.mui-fullscreen img',function(){
+  window.WebViewJavascriptBridge.callHandler(
+    'functionInAndroid'
+    , {'param': this.src}
+    , function(responseData) {
+      alert('"send get responseData from java, data = "' + responseData)
+    }
+  );
+  console.log(this.src)
+});
+
+// 192.168.2.237:4000/house/houseDetail?houseId=2&userType=customer&houseType=2&userId=kpgnpdqqfl
+function connectWebViewJavascriptBridge(callback) {
+  if (window.WebViewJavascriptBridge) {
+    callback(WebViewJavascriptBridge)
+  } else {
+    document.addEventListener(
+      'WebViewJavascriptBridgeReady'
+      , function() {
+        callback(WebViewJavascriptBridge)
+      },
+      false
+    );
+  }
+}
+
+connectWebViewJavascriptBridge(function(bridge) {
+  bridge.init(function(message, responseCallback) {
+    // console.log('JS got a message', message);
+    // var data = {
+    //   'Javascript Responds': '测试中文!'
+    // };
+    // console.log('JS responding with', data);
+    // responseCallback(data);
+  });
+
+  bridge.registerHandler("functionInJs", function(data, responseCallback) {
+    console.log("data from Java: = " + data)
+    var responseData = "Javascript Says Right back aka!";
+    responseCallback(responseData);
+  });
+})
 
 
 
