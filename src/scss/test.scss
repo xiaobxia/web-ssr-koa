@@ -1,0 +1,26 @@
+@import "var/var";
+@import "./var/core";
+
+#segmentedControl {
+  height: 80px;
+  line-height: 80px;
+  .mui-control-item {
+    width: 25%;
+    font-size: 36px;
+    line-height: 80px;
+  }
+}
+
+.filter-control-wrap {
+  .mui-backdrop{
+    top: 80px;
+  }
+  .filter-content-wrap {
+    position: fixed;
+    .mui-table-view {
+
+    }
+  }
+}
+
+

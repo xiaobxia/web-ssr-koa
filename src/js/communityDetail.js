@@ -11,7 +11,7 @@
     map = new BMap.Map("house-baidu-map"),
     point = new BMap.Point(b_map_x, b_map_y),
     iconInfo = {
-      path: '/static/asset/label.png',
+      path: mapLabel,
       width: 260,
       height: 132,
       textHeight: 88

@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title 房源
+    meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+    link(rel="stylesheet", type="text/css", href="/static/lib/mui.min.css")
+    link(rel="stylesheet", type="text/css", href="/static/css/test.css")
+    script(type="text/javascript", src="/static/lib/mui.js")
+    script(type="text/javascript", src="/static/lib/util.js")
+    script(type="text/javascript").
+      setAdaptive();
+    if isDev == true
+      script(type="text/javascript", src="/static/lib/vconsole.min.js")
+      script(type="text/javascript").
+        var vConsole = new VConsole();
+  body
+    #segmentedControl.mui-segmented-control
+      a(class="mui-control-item" href="#range") 区域
+      a(class="mui-control-item" href="#price") 价格
+      a(class="mui-control-item" href="#type") 房型
+      a(class="mui-control-item" href="#more") 更多
+    .filter-control-wrap
+      #range.mui-control-content
+        div.mui-backdrop
+          ul(class="mui-table-view")
+            li(class="mui-table-view-cell") 1
+            li(class="mui-table-view-cell") 2
+            li(class="mui-table-view-cell") 3
+      #price.mui-control-content
+        div.filter-content-wrap 12
+      #type.mui-control-content
+        div.filter-content-wrap 13
+      #more.mui-control-content
+        div.filter-content-wrap 14
+    script(type="text/javascript", src="/static/js/test.js")
+

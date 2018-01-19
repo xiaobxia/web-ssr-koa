@@ -21,12 +21,20 @@ gulp.task('clean', function () {
 
 gulp.task('lib', function () {
   return gulp.src(path.lib)
-    .pipe(gulp.dest(path.dist + assetsSubDirectory+'/lib'));
+    .pipe(rev())
+    .pipe(gulp.dest(path.dist + assetsSubDirectory + '/lib'))
+    .pipe(rev.manifest())
+    //json
+    .pipe(gulp.dest('rev/lib'));
 });
 
 gulp.task('asset', function () {
   return gulp.src(path.asset)
-    .pipe(gulp.dest(path.dist + assetsSubDirectory+'/asset'));
+    .pipe(rev())
+    .pipe(gulp.dest(path.dist + assetsSubDirectory + '/asset'))
+    .pipe(rev.manifest())
+    //json
+    .pipe(gulp.dest('rev/asset'));
 });
 
 
@@ -41,7 +49,7 @@ gulp.task('scss', function () {
     .pipe(postcss([pxtorem(config.base.pxtorem), autoprefixer(config.base.autoprefixer)]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(rev())
-    .pipe(gulp.dest(path.dist + assetsSubDirectory+'/css'))
+    .pipe(gulp.dest(path.dist + assetsSubDirectory + '/css'))
     .pipe(rev.manifest())
     //json
     .pipe(gulp.dest('rev/css'));
@@ -52,7 +60,7 @@ gulp.task('js', function () {
     .pipe(babel())
     .pipe(uglify())
     .pipe(rev())
-    .pipe(gulp.dest(path.dist + assetsSubDirectory+'/js'))
+    .pipe(gulp.dest(path.dist + assetsSubDirectory + '/js'))
     .pipe(rev.manifest())
     //json
     .pipe(gulp.dest('rev/js'));
@@ -60,20 +68,33 @@ gulp.task('js', function () {
 
 gulp.task('rev', function () {
   //json文件和接收注入的pug文件
-  console.log(path.dist + '/*.pug');
-  return gulp.src(['rev/**/*.json', path.dist + '/*.pug'])
+  return gulp.src(['rev/**/*.json', path.dist + '/**/*.pug'])
     .pipe(revCollector({
       replaceReved: true,
       dirReplacements: {
         //替换
         '/css/': assetsPublicPath + '/css/',
-        '/js/': assetsPublicPath + '/js/'
+        '/js/': assetsPublicPath + '/js/',
+        '/lib/': assetsPublicPath + '/lib/',
+        '/asset/': assetsPublicPath + '/asset/'
       }
     }))
     .pipe(gulp.dest(path.dist));
 });
 
 
+gulp.task('revCss', function () {
+  return gulp.src(['rev/**/*.json', path.dist + assetsSubDirectory + '/css/*.css'])
+    .pipe(revCollector({
+      replaceReved: true,
+      dirReplacements: {
+        '/asset/': '/asset/'
+      }
+    }))
+    .pipe(gulp.dest(path.dist + assetsSubDirectory + '/css'));
+});
+
+
 gulp.task('build', gulp.parallel('lib', 'asset', 'pug', 'scss', 'js'));
 
-gulp.task('default', gulp.series('clean', 'build', 'rev'));
+gulp.task('default', gulp.series('clean', 'build', 'rev', 'revCss'));

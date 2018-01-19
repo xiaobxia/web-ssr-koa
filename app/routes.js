@@ -65,6 +65,11 @@ router.get('/', async (ctx) => {
   ctx.body = pug.renderFile(getViewFile('index.pug'), merge(pugOptions, {}));
 });
 
+router.get('/test', async (ctx) => {
+  log.trace('请求进入: /test');
+  ctx.body = pug.renderFile(getViewFile('test.pug'), merge(pugOptions, {}));
+});
+
 router.get('/house/houseDetail', async (ctx) => {
   log.trace('请求进入: /house/houseDetail');
   const query = validateData({
