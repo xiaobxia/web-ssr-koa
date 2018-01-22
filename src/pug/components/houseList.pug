@@ -10,7 +10,7 @@ mixin houseList(houseList, defaultImg, userType, houseType, userId)
               else
                 img(class="b-lazy" src=defaultImg)
             .info-wrap
-              h3=houseInfo.block_name
+              h3=houseInfo.title
               if houseType == '1'
                 p.sub-title=houseInfo.buildarea + '/朝' + houseInfo.forward + '/' + houseInfo.floor_type + '共' + houseInfo.totalfloor
               else

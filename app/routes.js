@@ -28,7 +28,7 @@ function validateData(rule, data) {
   for (let key in rule) {
     if (rule.hasOwnProperty(key)) {
       if (!rule[key].type) {
-        rule[key] = 'string';
+        rule[key].type = 'string';
       }
       fake[key] = data[key];
     }
