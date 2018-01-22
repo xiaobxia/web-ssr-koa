@@ -71,6 +71,8 @@ class Parameter {
             code: this.t('missing_field')
           });
         }
+      } else {
+        return;
       }
 
       var checker = TYPE_MAP[rule.type];
