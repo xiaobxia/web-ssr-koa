@@ -29,8 +29,10 @@ function validateData(rule, data) {
     if (rule.hasOwnProperty(key)) {
       if (!rule[key].type) {
         rule[key].type = 'string';
+        fake[key] = data[key];
+      } else if (rule[key].type === 'number') {
+        fake[key] = parseInt(data[key], 10);
       }
-      fake[key] = data[key];
     }
   }
   let msgList = p.validate(rule, fake);
