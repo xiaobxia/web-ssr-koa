@@ -74,8 +74,8 @@ router.get('/house/houseDetail', async (ctx) => {
   log.trace('请求进入: /house/houseDetail');
   const query = validateData({
     houseId: {required: true},
-    userType: {required: true},
-    houseType: {required: true},
+    userType: {required: true, include: ['customer', 'broker']},
+    houseType: {required: true, include: ['1', '2']},
     userId: {required: true}
   }, ctx.request.query);
   let apiUrl = '';
@@ -108,8 +108,8 @@ router.get('/house/communityDetail', async (ctx) => {
   log.trace('请求进入: /house/communityDetail');
   const query = validateData({
     blockId: {required: true},
-    userType: {required: true},
-    houseType: {required: true},
+    userType: {required: true, include: ['customer', 'broker']},
+    houseType: {required: true, include: ['1', '2']},
     userId: {required: true}
   }, ctx.request.query);
   const apiUrl = phpAddress + '/community/communityInfo';

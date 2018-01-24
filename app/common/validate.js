@@ -75,6 +75,14 @@ class Parameter {
         return;
       }
 
+      if (rule.include && rule.include.indexOf(obj[key]) === -1) {
+        errors.push({
+          message: this.t('invalid'),
+          field: key,
+          code: this.t('invalid_value')
+        });
+      }
+
       var checker = TYPE_MAP[rule.type];
       if (!checker) {
         throw new TypeError('rule type must be one of ' + Object.keys(TYPE_MAP).join(', ') +
